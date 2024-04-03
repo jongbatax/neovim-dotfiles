@@ -1,0 +1,55 @@
+snippet s:fun "create function"
+	function ${1:fun_name}(${2:params})${3://fun_type}
+	{
+		${0://code here}
+	}
+
+snippet s:idx "index method"
+	public function index()
+	{
+		return view("${0}");
+	}
+
+snippet s:create "create method"
+	public function create()
+	{
+		return view("${0}");
+	}
+
+snippet s:store "store method"
+	public function store($$Request $$request)
+	{
+		${0://code here}
+	}
+
+snippet s:edit "edit method"
+	public function edit(${1:params})
+	{
+		return view("${0}");
+	}
+
+snippet s:update "update method"
+	public function update($$Request $$request, ${1})
+	{
+		${0://code here}
+	}
+
+snippet s:destroy "destroy method"
+	public function destroy(${1})
+	{
+		${0://code here}
+	}
+
+snippet s:met "create method"
+	${1:access_modifier} function ${2:method_name}(${3:args})${3://method_type}
+	{
+		${0://code here}
+	}
+
+snippet th "insert $this->"
+	\$this->${0}
+
+snippet match "match statement"
+    match(${1}) {
+        ${0}
+    };

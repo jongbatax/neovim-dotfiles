@@ -1,0 +1,272 @@
+snippet b:extends "Extend Layout"
+	@extends('${1:name}')
+
+snippet b:yield "Yield Content"
+	@yield('${1:name}')
+
+snippet b:section "Content Section"
+	@section('${1:name}')
+	    $2
+	@endsection
+
+snippet b:section-show "Content Section Show"
+	@section('$1')
+	    $2
+	@show
+
+snippet b:include "Include View"
+	@include('${1:name}')
+
+snippet b:if "If Block"
+	@if ($1)
+	    $2
+	@endif
+
+snippet b:if-else "If-Else Block"
+	@if ($1)
+	    $2
+	@else
+	    $3
+	@endif
+
+snippet b:has-section "@hasSection Condition"
+	@hasSection ('${1:name}')
+	    $2
+	@else
+	    $3
+	@endif
+
+snippet b:unless "Unless Block"
+	@unless ($1)
+	    $2
+	@endunless
+
+snippet b:for "For Block"
+	@for ($i = ${1:0}; $i < ${2:count}; $i++)
+	    $3
+	@endfor
+
+snippet b:foreach "Foreach Block"
+	@foreach (${1:collection} as ${2:item})
+	    $3
+	@endforeach
+
+snippet b:forelse "Forelse Block"
+	@forelse (${1:collection} as ${2:item})
+	    $3
+	@empty
+	    $4
+	@endforelse
+
+snippet b:while "While Block"
+	@while ($1)
+	    $2
+	@endwhile
+
+snippet b:each "Each Loop"
+	@each('${1:view.name}', ${2:collection}, '${3:variable}', '${4:view.empty}')
+
+snippet b:comment "Blade Comment"
+	{{-- ${1:comment} --}}
+
+snippet b:echo "Blade Echo Data"
+	{{ ${1:data} }}
+
+snippet b:echo-html "Blade Echo Unescaped Data"
+	{!! ${1:html_data} !!}
+
+snippet b:echo-raw "Blade Echo Untouched Data"
+	@{{ ${1:variable} }}
+
+snippet b:verbatim "Blade Verbatim"
+	@verbatim
+	{{ ${1:variable} }}
+	@endverbatim
+
+snippet b:push "Push Stack"
+	@push('${1:name}')
+	    $2
+	@endpush
+
+snippet b:stack "Stack"
+	@stack('${1:name}')
+
+snippet b:inject "Inject Service"
+	@inject('${1:name}', '${2:class}')
+
+snippet b:can "@can"
+	@can('${1:update}', ${2:post})
+	    $3
+	@endcan
+
+snippet b:can-elsecan "@can-elsecan"
+	@can('${1:update}', ${2:post})
+	    $3
+	@elsecan('create', App\\Models\\${4:Post}::class)
+	    $5
+	@endcan
+
+snippet b:canany "@canany"
+	@canany(['${1:update}', '${2:view}', '${3:delete}'], ${4:post})
+	    $5
+	@endcanany
+
+snippet b:canany-elsecanany "@canany-elsecanany"
+	@canany(['${1:update}', '${2:view}', '${3:delete}'], ${4:post})
+	    $5
+	@elsecanany(['${6:create}'], App\\Models\\${7:Post}::class)
+	    $8
+	@endcanany
+
+snippet b:cannot "@cannot"
+	@cannot('${1:update}', ${2:post})
+	    $3
+	@endcannot
+
+snippet b:cannot-elsecannot "@cannot-elsecannot"
+	@cannot('${1:update}', ${2:post})
+	    $3
+	@elsecannot('create', App\\Models\\${5:Post}::class)
+	    $6
+	@endcannot
+
+snippet b:loop "$loop Variable"
+	\$loop->${1:first}
+
+snippet b:loop-first "Loop First"
+	@if (\$loop->first)
+	    ${1:{{-- This is the first iteration --}}}
+	@endif
+
+snippet b:loop-last "Loop Last"
+	@if (\$loop->last)
+	    ${1:{{-- This is the last iteration --}}}
+	@endif
+
+snippet b:php "PHP Block"
+	@php
+	    $1
+	@endphp
+
+snippet b:includeIf "Include If"
+	@includeIf('${1:view.name}'${2:, ['some' => 'data']})
+
+snippet b:component "Component"
+	@component('${1:component}')
+	    $2
+	@endcomponent
+
+snippet b:slot "Slot"
+	@slot('${1:name}')
+	    $2
+	@endslot
+
+snippet b:isset "Isset"
+	@isset(${1:record})
+	    $2
+	@endisset
+
+snippet b:empty "Empty"
+	@empty(${1:record})
+	    $2
+	@endempty
+
+snippet b:error "Error"
+	@error('${1:record}')
+	    $2
+	@enderror
+
+snippet b:allError "List errors if available"
+	@if (\$errors->any())
+		<div class="alert alert-danger">
+			<ul>
+				@foreach (\$errors->all() as \$error)
+					<li>{{ \$error }}</li>
+				@endforeach
+			</ul>
+		</div>
+	@endif
+
+
+snippet b:includeWhen "Include When"
+	@includeWhen(${1:$boolean}, '${2:view.name}', [${3:'some' => 'data'}])
+
+snippet b:csrf "CSRF Field"
+	@csrf
+
+snippet b:method "Form Method Field"
+	@method(${1:method})
+
+snippet b:dump "Dump"
+	@dump(${1:variable})
+
+snippet b:dd "Dump and Die"
+	@dd(${1:variable})
+
+snippet b:lang "Lang"
+	@lang('${1:messages.welcome}')
+
+snippet b:includeUnless "Include Unless"
+	@includeUnless(${1:boolean}, '${2:view.name}', [${3:'some' => 'data'}])
+
+snippet b:props "Component Props"
+	@props(['${1:propName}'])
+
+snippet b:env "Env"
+	@env('${1:staging}')
+	    $2
+	@endenv
+
+snippet b:production "Production"
+	@production
+	    $1
+	@endproduction
+
+snippet b:once "Once"
+	@once
+	    $1
+	@endonce
+
+snippet b:aware "Aware"
+	@aware(['${1:propName}'])
+
+snippet b:js "JS"
+	@js(${1:data})
+
+snippet b:class "Class"
+	@class(['${1:p-4}', ${2:'font-bold' => true}])
+
+snippet b:checked "Checked"
+	@checked(${1:true})
+
+snippet b:selected "Selected"
+	@selected(${1:true})
+
+snippet b:disabled "Disabled"
+	@disabled(${1:true})
+
+snippet b:style "Style"
+	@style(${1:style})
+
+snippet b:readonly "Readonly"
+	@readonly(${1:true})
+
+snippet b:required "Required"
+	@required(${1:true})
+
+snippet b:pushOnce "Push Once"
+	@pushOnce('${1:scripts}')
+	    $2
+	@endPushOnce
+
+snippet b:prepend "Prepend"
+	@prepend('${1:scripts}')
+	    $2
+	@endprepend
+
+snippet b:prependOnce "Prepend Once"
+	@prependOnce('${1:scripts}')
+	    $2
+	@endPrependOnce
+
+
